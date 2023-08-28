@@ -6,6 +6,7 @@ class SocketIOClientWrapper {
     stream,
     serverUrl,
     debug = false,
+    roomName,
     simplePeerOptions,
   } = {}) {
     this.debug = debug;
@@ -56,7 +57,7 @@ class SocketIOClientWrapper {
 
   // starts socket client communication with signal server automatically
   _startSocketCommunication() {
-    this.socket.emit('create or join');
+    this.socket.emit('create or join', this.roomName);
     this.debug && console.log('Attempted to create or join room');
   }
 
